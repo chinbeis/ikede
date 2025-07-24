@@ -1,43 +1,39 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
+import "../i18n";
 
-const posts = [
-  {
-    title: "The Future of Sustainable Construction",
-    date: "July 23, 2025",
-    excerpt:
-      "Sustainable construction is not just a trend; it's a necessity. In this post, we explore the latest innovations and techniques that are shaping the future of the industry.",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
-  },
-  {
-    title: "Top 5 Tips for a Successful Home Renovation",
-    date: "July 15, 2025",
-    excerpt:
-      "A home renovation can be a daunting task, but with the right planning and execution, it can be a rewarding experience. Here are our top 5 tips for a successful renovation.",
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
-  },
-  {
-    title: "The Importance of Quality Materials in Construction",
-    date: "July 1, 2025",
-    excerpt:
-      "The quality of the materials used in a construction project is crucial to its success. In this post, we discuss the importance of using high-quality materials and how to source them.",
-    image: "https://images.unsplash.com/photo-1448630360428-65456885c650?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
-  },
-];
+interface Post {
+  id: string;
+  title: string;
+  date: string;
+  excerpt: string;
+  image: string;
+}
 
 const Blog = () => {
+  const [posts, setPosts] = useState<Post[]>([]);
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    fetch("/api/blogs")
+      .then((res) => res.json())
+      .then((data) => setPosts(data));
+  }, []);
+
   return (
-    <div className="bg-navy-blue text-white py-16 sm:py-24">
+    <div className="bg-blue-900 text-white py-16 sm:py-24">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-environmental-green">
-          From Our Blog
+        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-green-500">
+          {t("blogTitle")}
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {posts.map((post, index) => (
+          {posts.map((post) => (
             <div
-              key={index}
-              className="bg-bright-blue text-white rounded-lg shadow-lg overflow-hidden transform transition-transform hover:scale-105"
+              key={post.id}
+              className="bg-[#E5E7EB] text-white rounded-lg shadow-lg overflow-hidden transform transition-transform hover:scale-105"
             >
               <div className="relative h-56">
                 <Image
@@ -49,16 +45,16 @@ const Blog = () => {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-2xl font-bold mb-2 text-navy-blue">
+                <h3 className="text-2xl font-bold mb-2 text-blue-900">
                   {post.title}
                 </h3>
-                <p className="text-gray-300 mb-2">{post.date}</p>
-                <p className="text-gray-300 mb-4">{post.excerpt}</p>
+                <p className="text-gray-600 mb-2">{post.date}</p>
+                <p className="text-gray-900 mb-4">{post.excerpt}</p>
                 <Link
-                  href="#"
-                  className="text-navy-blue font-bold hover:underline"
+                  href={`/blog/${post.id}`}
+                  className="text-blue-900 font-bold hover:underline"
                 >
-                  Read More
+                  {t("readMore")}
                 </Link>
               </div>
             </div>
