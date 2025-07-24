@@ -8,52 +8,50 @@ const AboutUs = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="bg-blue-900 text-white py-16 sm:py-24">
+    <div className="bg-gray-50 py-20 sm:py-28">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
           <div className="order-2 md:order-1">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-green-500">
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-800 mb-6">
               {t("aboutTitle")}
             </h2>
-            <p className="text-gray-300 mb-4 text-lg">
+            <p className="text-gray-600 mb-6 text-lg leading-relaxed">
               {t("aboutDescription1")}
             </p>
-            <p className="text-gray-300 text-lg">
+            <p className="text-gray-600 text-lg leading-relaxed">
               {t("aboutDescription2")}
             </p>
           </div>
           <div className="order-1 md:order-2">
-            <div className="relative h-96">
+            <div className="relative h-96 rounded-lg overflow-hidden shadow-2xl">
               <Image
                 src="/images/image2.jpg"
                 alt="About Us Image"
-                width={800}
-                height={600}
-                className="rounded-lg shadow-lg w-full h-full object-cover"
+                layout="fill"
+                objectFit="cover"
               />
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center mt-20 sm:mt-28">
           <div className="order-1">
-            <div className="relative h-96">
+            <div className="relative h-96 rounded-lg overflow-hidden shadow-2xl">
               <Image
                 src="/images/image3.jpg"
                 alt="Our Mission"
-                width={800}
-                height={600}
-                className="rounded-lg shadow-lg w-full h-full object-cover"
+                layout="fill"
+                objectFit="cover"
               />
             </div>
           </div>
           <div className="order-2">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-green-500">
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-800 mb-6">
               {t("missionTitle")}
             </h2>
-            <p className="text-gray-300 mb-4 text-lg">
+            <p className="text-gray-600 mb-6 text-lg leading-relaxed">
               {t("missionDescription1")}
             </p>
-            <p className="text-gray-300 text-lg">
+            <p className="text-gray-600 text-lg leading-relaxed">
               {t("missionDescription2")}
             </p>
           </div>

@@ -27,20 +27,26 @@ const Partners = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="bg-[#E5E7EB] py-16 sm:py-24 px-4">
-      <div className="container mx-auto">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-white">
-          {t("partnersTitle")}
-        </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+    <div className="bg-white py-20 sm:py-28">
+      <div className="container mx-auto px-4">
+        <div className="text-center">
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-800 mb-4">
+            {t("partnersTitle")}
+          </h2>
+          <div className="h-1 w-24 bg-blue-500 mx-auto mb-12"></div>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
           {logos.map((logo, index) => (
-            <div key={index} className="flex justify-center items-center">
+            <div
+              key={index}
+              className="flex justify-center items-center p-4 rounded-lg transition-all duration-300 transform hover:scale-110"
+            >
               <Image
                 src={logo.src}
                 alt={logo.alt}
-                width={150}
-                height={100}
-                className="grayscale hover:grayscale-0 transition-all duration-300"
+                width={160}
+                height={110}
+                className="grayscale hover:grayscale-0"
               />
             </div>
           ))}

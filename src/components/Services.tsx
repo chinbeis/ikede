@@ -40,22 +40,29 @@ const Services = () => {
   ];
 
   return (
-    <div className="bg-[#E5E7EB] text-white py-16 sm:py-24">
+    <div className="bg-white py-20 sm:py-28">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-green-500">
-          {t("servicesTitle")}
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div className="text-center">
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-800 mb-4">
+            {t("servicesTitle")}
+          </h2>
+          <div className="h-1 w-24 bg-blue-500 mx-auto mb-12"></div>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-white text-blue-900 p-8 rounded-lg shadow-lg text-center transform transition-transform hover:scale-105"
+              className="bg-gray-50 p-8 rounded-xl shadow-lg text-center transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl"
             >
-              <div className="text-5xl mb-4 text-green-500">
+              <div className="text-6xl mb-6 text-blue-500">
                 {service.icon}
               </div>
-              <h3 className="text-2xl font-bold mb-2">{service.title}</h3>
-              <p className="text-gray-600">{service.description}</p>
+              <h3 className="text-2xl font-bold text-gray-800 mb-3">
+                {service.title}
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                {service.description}
+              </p>
             </div>
           ))}
         </div>
