@@ -56,6 +56,29 @@ const AboutUs = () => {
             </p>
           </div>
         </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center mt-20 sm:mt-28">
+          <div className="order-2 md:order-1">
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-800 mb-6">
+              {t("presidentsWordTitle")}
+            </h2>
+            <p className="text-gray-600 mb-6 text-lg leading-relaxed">
+              {t("presidentsWordDescription1")}
+            </p>
+            <p className="text-gray-600 text-lg leading-relaxed">
+              {t("presidentsWordDescription2")}
+            </p>
+          </div>
+          <div className="order-1 md:order-2">
+            <div className="relative h-96 rounded-lg overflow-hidden shadow-2xl">
+              <Image
+                src="/images/image1.jpg"
+                alt="President's Word"
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

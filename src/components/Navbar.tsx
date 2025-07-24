@@ -27,13 +27,13 @@ const Navbar = () => {
   return (
     <div
       className={`sticky top-0 z-50 flex w-full justify-between items-center p-4 transition-all duration-300 ${
-        isScrolled ? "bg-white shadow-md" : "bg-transparent"
+        isScrolled ? "bg-white shadow-md" : "bg-white"
       }`}
     >
       <Link
         href="/"
         className={`text-2xl font-bold transition-colors ${
-          isScrolled ? "text-gray-800" : "text-white"
+          isScrolled ? "text-gray-800" : "text-gray-800"
         }`}
       >
         Ikede Group
