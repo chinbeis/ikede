@@ -41,15 +41,6 @@ const Navbar = () => {
             <Link href="/" className="text-gray-300 hover:text-blue-400 transition-colors">
               {t("home")}
             </Link>
-            <Link href="/about" className="text-gray-300 hover:text-blue-400 transition-colors">
-              {t("about")}
-            </Link>
-            <Link href="/services" className="text-gray-300 hover:text-blue-400 transition-colors">
-              {t("services")}
-            </Link>
-            <Link href="/blog" className="text-gray-300 hover:text-blue-400 transition-colors">
-              {t("blog")}
-            </Link>
             <Link href="/contact" className="text-gray-300 hover:text-blue-400 transition-colors">
               {t("contactUs")}
             </Link>
@@ -81,15 +72,6 @@ const Navbar = () => {
           <div className="w-full px-4 pt-2 pb-3 space-y-1">
             <Link href="/" className="block text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md">
               {t("home")}
-            </Link>
-            <Link href="/about" className="block text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md">
-              {t("about")}
-            </Link>
-            <Link href="/services" className="block text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md">
-              {t("services")}
-            </Link>
-            <Link href="/blog" className="block text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md">
-              {t("blog")}
             </Link>
             <Link href="/contact" className="block text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md">
               {t("contactUs")}
