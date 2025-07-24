@@ -11,10 +11,11 @@ async function getBlogs() {
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   const posts = await getBlogs();
-  const post = posts.find((p: { id: string }) => p.id === params.id);
+  const post = posts.find((p: { id: string }) => p.id === id);
   if (!post) {
     return new NextResponse("Post not found", { status: 404 });
   }
@@ -23,11 +24,12 @@ export async function GET(
 
 export async function PUT(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   const posts = await getBlogs();
   const updatedPost = await req.json();
-  const index = posts.findIndex((p: { id: string }) => p.id === params.id);
+  const index = posts.findIndex((p: { id: string }) => p.id === id);
   if (index === -1) {
     return new NextResponse("Post not found", { status: 404 });
   }
@@ -38,10 +40,11 @@ export async function PUT(
 
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   const posts = await getBlogs();
-  const filteredPosts = posts.filter((p: { id: string }) => p.id !== params.id);
+  const filteredPosts = posts.filter((p: { id: string }) => p.id !== id);
   if (posts.length === filteredPosts.length) {
     return new NextResponse("Post not found", { status: 404 });
   }
