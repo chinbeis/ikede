@@ -7,6 +7,7 @@ import LanguageSwitcher from "./LanguageSwitcher";
 
 const Navbar = () => {
   const { t } = useTranslation();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
