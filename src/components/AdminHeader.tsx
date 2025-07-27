@@ -20,7 +20,7 @@ const AdminHeader = () => {
   return (
     <header className="bg-gray-900 text-white p-4 flex justify-between items-center shadow-md">
       <Link href="/admin/dashboard" className="text-xl font-bold">
-        Ikede Admin
+        Ikeda Admin
       </Link>
       {isAdmin && (
         <button

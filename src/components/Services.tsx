@@ -1,61 +1,91 @@
 "use client";
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import "../i18n";
 
 const Services = () => {
   const { t } = useTranslation();
+  const [ref, isIntersecting] = useIntersectionObserver({ threshold: 0.1 });
 
   const services = [
     {
-      icon: "🏗️",
-      title: t("constructionTitle"),
-      description: t("constructionDescription"),
+      image: "/Services/1.jpg",
+      title: t("service1Title"),
+      description: t("service1Text"),
     },
     {
-      icon: "📐",
-      title: t("architectureTitle"),
-      description: t("architectureDescription"),
+      image: "/Services/2.jpg",
+      title: t("service2Title"),
+      description: t("service2Text"),
     },
     {
-      icon: "💡",
-      title: t("consultingTitle"),
-      description: t("consultingDescription"),
+      image: "/Services/3.jpg",
+      title: t("service3Title"),
+      description: t("service3Text"),
     },
     {
-      icon: "🏘️",
-      title: t("realEstateTitle"),
-      description: t("realEstateDescription"),
+      image: "/Services/4.webp",
+      title: t("service4Title"),
+      description: t("service4Text"),
     },
     {
-      icon: "🌳",
-      title: t("landscapingTitle"),
-      description: t("landscapingDescription"),
+      image: "/Services/5.jpeg",
+      title: t("service5Title"),
+      description: t("service5Text"),
     },
     {
-      icon: "🔧",
-      title: t("renovationTitle"),
-      description: t("renovationDescription"),
+      image: "/Services/6.jpeg",
+      title: t("service6Title"),
+      description: t("service6Text"),
+    },
+    {
+      image: "/Services/7.jpeg",
+      title: t("service7Title"),
+      description: t("service7Text"),
+    },
+    {
+      image: "/Services/8.jpeg",
+      title: t("service8Title"),
+      description: t("service8Text"),
     },
   ];
 
   return (
-    <div className="bg-white py-20 sm:py-28">
+    <div
+      ref={ref as React.RefObject<HTMLDivElement>}
+      className={`bg-[#F5F5F5] py-20 sm:py-28 transition-opacity duration-1000 ${
+        isIntersecting ? "opacity-100" : "opacity-0"
+      }`}
+    >
       <div className="container mx-auto px-4">
-        <div className="text-center">
+        <div
+          className={`text-center ${
+            isIntersecting ? "fade-in-up" : "hidden-initial"
+          }`}
+        >
           <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-800 mb-4">
-            {t("servicesTitle")}
+            {t("ourServices")}
           </h2>
-          <div className="h-1 w-24 bg-blue-500 mx-auto mb-12"></div>
+          <p className="text-lg text-gray-600 mb-12">{t("servicesIntro")}</p>
+          <div className="h-1 w-24 bg-[#4682B4] mx-auto mb-12"></div>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+        <div
+          className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 ${
+            isIntersecting ? "fade-in-up" : "hidden-initial"
+          }`}
+        >
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-gray-50 p-8 rounded-xl shadow-lg text-center transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl"
+              className="bg-white pb-4 px-4 rounded-xl shadow-lg text-center transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl"
             >
-              <div className="text-6xl mb-6 text-blue-500">
-                {service.icon}
+              <div className="relative w-full h-48 mb-6">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-full object-cover rounded-lg"
+                />
               </div>
               <h3 className="text-2xl font-bold text-gray-800 mb-3">
                 {service.title}

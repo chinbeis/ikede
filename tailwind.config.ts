@@ -2,8 +2,8 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
@@ -26,6 +26,7 @@ const config: Config = {
       animation: {
         marquee: "marquee 25s linear infinite",
         float: "float 3s ease-in-out infinite",
+        "fade-in-up": "fade-in-up 1s ease-out forwards",
       },
       keyframes: {
         marquee: {
@@ -36,6 +37,16 @@ const config: Config = {
           "0%": { transform: "translateY(0px)" },
           "50%": { transform: "translateY(-10px)" },
           "100%": { transform: "translateY(0px)" },
+        },
+        "fade-in-up": {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(20px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
         },
       },
     },

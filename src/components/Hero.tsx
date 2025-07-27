@@ -5,9 +5,11 @@ import { useTranslation } from "react-i18next";
 import "../i18n";
 
 const images = [
-  "/images/image1.jpg",
-  "/images/image2.jpg",
-  "/images/image3.jpg",
+  "/Hero/64ac31de0e5239f5ed8b3be0_trade_1900x924.jpg",
+  "/Hero/aNghvgHCxOgH52XaKRMvGq6kE.webp",
+  "/Hero/Japan-Used-Car-Export-Statistics.webp",
+  "/Hero/TradeCommodities.jpg",
+  "/Hero/underground_road_tunnel-1664303.webp",
 ];
 
 const Hero = () => {
@@ -49,17 +51,27 @@ const Hero = () => {
           />
         </div>
       ))}
-      <div className="absolute inset-0 bg-opacity-40 flex items-center justify-center">
-        <div className="text-center text-white p-4">
-          <h1 className="text-5xl md:text-7xl font-extrabold mb-4 leading-tight">
-            {t("heroTitle")}
+      <div className="absolute inset-0 bg-opacity-50 flex flex-col items-center justify-center">
+        <div className="text-center text-[#1A1F2B] p-4 max-w-4xl">
+          <h1 className="text-5xl md:text-7xl font-extrabold mb-4 leading-tight fade-in-up" style={{ animationDelay: '0.2s' }}>
+            {t("heroHeadline")}
           </h1>
-          <p className="text-xl md:text-2xl font-light">{t("heroSubtitle")}</p>
+          <p className="text-lg md:text-xl font-light mb-8 fade-in-up" style={{ animationDelay: '0.6s' }}>
+            {t("introText1")}
+          </p>
+          <div className="flex justify-center gap-4 fade-in-up" style={{ animationDelay: '1s' }}>
+            <button className="bg-primary hover:bg-primary-dark text-[#1A1F2B] font-bold py-3 px-6 rounded-full transition-all">
+              {t("exploreSolutions")}
+            </button>
+            <button className="bg-transparent border-2 border-[#1A1F2B] text-[#1A1F2B] font-bold py-3 px-6 rounded-full hover:bg-[#1A1F2B] hover:text-white transition-all">
+              {t("partnerWithUs")}
+            </button>
+          </div>
         </div>
       </div>
       <button
         onClick={prevImage}
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-opacity-20 text-white p-3 rounded-full hover:bg-opacity-30 transition-all"
+        className="absolute top-1/2 left-4 transform -translate-y-1/2 p-3 rounded-full hover:bg-gray-700 hover:bg-opacity-80 transition-all text-[#9e1b1b]"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -78,7 +90,7 @@ const Hero = () => {
       </button>
       <button
         onClick={nextImage}
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-opacity-20 text-white p-3 rounded-full hover:bg-opacity-30 transition-all"
+        className="absolute top-1/2 right-4 transform -translate-y-1/2 p-3 rounded-full hover:bg-gray-700 hover:bg-opacity-80 transition-all text-[#9e1b1b]"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
