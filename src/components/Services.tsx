@@ -10,37 +10,37 @@ const Services = () => {
 
   const services = [
     {
-      image: "/Services/1.jpg",
+      image: "/Services/architect2.png",
       title: t("service1Title"),
       description: t("service1Text"),
     },
     {
-      image: "/Services/2.jpg",
+      image: "/Services/1.jpg",
       title: t("service2Title"),
       description: t("service2Text"),
     },
     {
-      image: "/Services/3.jpg",
+      image: "/Services/2.jpg",
       title: t("service3Title"),
       description: t("service3Text"),
     },
     {
-      image: "/Services/4.webp",
+      image: "/Services/6.jpeg",
       title: t("service4Title"),
       description: t("service4Text"),
     },
     {
-      image: "/Services/5.jpeg",
+      image: "/Services/4.webp",
       title: t("service5Title"),
       description: t("service5Text"),
     },
     {
-      image: "/Services/6.jpeg",
+      image: "/Services/trade.jpg",
       title: t("service6Title"),
       description: t("service6Text"),
     },
     {
-      image: "/Services/7.jpeg",
+      image: "/Services/japan.png",
       title: t("service7Title"),
       description: t("service7Text"),
     },

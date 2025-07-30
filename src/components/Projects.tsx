@@ -7,25 +7,25 @@ import "../i18n";
 
 const projects = [
   {
-    image: "/images/image1.jpg",
+    image: "/projects/medical.jpg",
     title: "project1Title",
     description: "project1Text",
     timeline: "project1Timeline",
   },
   {
-    image: "/images/image2.jpg",
+    image: "/projects/school.avif",
     title: "project2Title",
     description: "project2Text",
     timeline: "project2Feasibility",
   },
   {
-    image: "/images/image3.jpg",
+    image: "/projects/tunnel.webp",
     title: "project3Title",
     description: "project3Text",
     timeline: null,
   },
   {
-    image: "/images/image1.jpg",
+    image: "/projects/turkiya.jpg",
     title: "project4Title",
     description: "project4Text",
     timeline: null,

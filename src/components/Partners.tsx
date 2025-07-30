@@ -13,7 +13,6 @@ const logos = [
   { src: "/Partners/file7.svg", alt: "Partner 7" },
   { src: "/Partners/file8.svg", alt: "Partner 8" },
   { src: "/Partners/file9.svg", alt: "Partner 9" },
-  { src: "/Partners/file10.svg", alt: "Partner 10" },
   { src: "/Partners/file11.svg", alt: "Partner 11" },
   { src: "/Partners/file12.svg", alt: "Partner 12" },
   { src: "/Partners/file13.svg", alt: "Partner 13" },
@@ -100,8 +99,8 @@ const Partners = () => {
                 Trusted By Industry Leaders
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-[#000080] mb-4">
+              <span className="bg-gradient-to-r bg-clip-text">
                 {t("ourPartners")}
               </span>
             </h2>
@@ -131,7 +130,7 @@ const Partners = () => {
                       <img
                         src={logo.src}
                         alt={logo.alt}
-                        className="h-12 sm:h-16 lg:h-20 w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                        className="h-12 sm:h-16 lg:h-20 w-auto object-contain"
                       />
                       <div className="absolute inset-0 rounded-xl border border-gray-200 group-hover:border-primary/30 transition-colors duration-300"></div>
                     </div>
@@ -147,7 +146,7 @@ const Partners = () => {
                       <img
                         src={logo.src}
                         alt={logo.alt}
-                        className="h-12 sm:h-16 lg:h-20 w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                        className="h-12 sm:h-16 lg:h-20 w-auto object-contain"
                       />
                       <div className="absolute inset-0 rounded-xl border border-gray-200 group-hover:border-primary/30 transition-colors duration-300"></div>
                     </div>
@@ -163,9 +162,6 @@ const Partners = () => {
               isIntersecting ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            <p className="text-gray-600 text-sm sm:text-base font-medium">
-              Proudly partnering with industry leaders worldwide
-            </p>
           </div>
         </div>
       </div>

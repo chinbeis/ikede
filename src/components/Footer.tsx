@@ -13,12 +13,22 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-2xl font-bold text-white mb-4">Ikeda Group</h3>
+            <h3 
+              className="text-2xl font-bold text-white mb-4"
+              style={{ textShadow: '0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 1px white' }}
+            >
+              Ikeda Group
+            </h3>
             <p className="text-gray-400">{t("footerSubtitle")}</p>
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold text-white mb-4">{t("quickLinks")}</h4>
+            <h4 
+              className="text-lg font-semibold text-white mb-4"
+              style={{ textShadow: '0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 1px white' }}
+            >
+              {t("quickLinks")}
+            </h4>
             <ul className="space-y-2">
               <li>
                 <Link href="/" className="hover:text-[#D4AF37] transition-colors">
@@ -49,14 +59,24 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold text-white mb-4">{t("contactTitle")}</h4>
+            <h4 
+              className="text-lg font-semibold text-white mb-4"
+              style={{ textShadow: '0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 1px white' }}
+            >
+              {t("contactTitle")}
+            </h4>
             <p className="text-gray-400">{t("office1")}</p>
             <p className="text-gray-400">{t("contactEmail")}</p>
             <p className="text-gray-400">{t("contactPhone")}</p>
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold text-white mb-4">{t("followUs")}</h4>
+            <h4 
+              className="text-lg font-semibold text-white mb-4"
+              style={{ textShadow: '0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 1px white' }}
+            >
+              {t("followUs")}
+            </h4>
             <div className="flex space-x-4">
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#D4AF37] transition-colors">
                 <TwitterLogoIcon className="w-6 h-6" />

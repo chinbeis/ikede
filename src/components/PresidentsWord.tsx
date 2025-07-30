@@ -34,8 +34,8 @@ const PresidentsWord = () => {
               Leadership Message
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
-            <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-[#000080] mb-4">
+              <span className="bg-gradient-to-r bg-clip-text">
               {t("presidentsWordTitle")}
             </span>
           </h2>
