@@ -12,7 +12,7 @@ const ContactPage = () => {
   return (
     <div
       ref={ref as React.RefObject<HTMLDivElement>}
-      className={`relative bg-gradient-to-br from-slate-50 via-white to-blue-50/20 py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 transition-all duration-1000 overflow-hidden ${
+      className={`relative bg-gradient-to-br from-slate-50 via-white to-blue-50/20 py-16 sm:py-24 lg:py-32 px-4 pt-4 sm:px-6 lg:px-8 transition-all duration-1000 overflow-hidden ${
         isIntersecting ? "opacity-100" : "opacity-0"
       }`}
     >
