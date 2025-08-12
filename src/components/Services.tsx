@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import { useTranslation } from "react-i18next";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import "../i18n";
@@ -81,10 +82,12 @@ const Services = () => {
               className="bg-white pb-4 px-4 rounded-xl shadow-lg text-center transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl"
             >
               <div className="relative w-full h-48 mb-6">
-                <img
+                <Image
                   src={service.image}
                   alt={service.title}
-                  className="w-full h-full object-cover rounded-lg"
+                  fill
+                  className="object-cover rounded-lg"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
               <h3 className="text-2xl font-bold text-gray-800 mb-3">

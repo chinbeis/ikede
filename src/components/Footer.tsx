@@ -2,7 +2,6 @@
 import React from "react";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
-import { TwitterLogoIcon, LinkedInLogoIcon, InstagramLogoIcon } from "@radix-ui/react-icons";
 import "../i18n";
 
 const Footer = () => {
@@ -72,17 +71,6 @@ const Footer = () => {
             >
               {t("followUs")}
             </h4>
-            <div className="flex space-x-4">
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#D4AF37] transition-colors">
-                <TwitterLogoIcon className="w-6 h-6" />
-              </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#D4AF37] transition-colors">
-                <LinkedInLogoIcon className="w-6 h-6" />
-              </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#D4AF37] transition-colors">
-                <InstagramLogoIcon className="w-6 h-6" />
-              </a>
-            </div>
           </div>
         </div>
 

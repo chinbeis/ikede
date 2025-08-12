@@ -2,109 +2,162 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
-import { Mail, Phone, MapPin, Linkedin, ExternalLink } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Building2, Globe } from "lucide-react";
 import "../i18n";
 
 const Contact = () => {
   const { t } = useTranslation();
   const [ref, isIntersecting] = useIntersectionObserver({ threshold: 0.1 });
 
-  const offices = [
-    t("office1"),
-    t("office2"), 
-    t("office3"),
-    t("office4")
-  ];
-
   return (
     <div
       ref={ref as React.RefObject<HTMLDivElement>}
-      className={`relative bg-gradient-to-br from-slate-50 via-white to-blue-50/30 py-20 sm:py-32 transition-all duration-1000 overflow-hidden ${
+      className={`relative bg-gradient-to-br from-slate-50 via-white to-blue-50/20 py-16 transition-all duration-1000 overflow-hidden ${
         isIntersecting ? "opacity-100" : "opacity-0"
       }`}
     >
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-bl from-blue-100/40 to-transparent rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-slate-100/40 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-blue-100/30 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-slate-100/30 to-transparent rounded-full blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        {/* Header Section */}
+        {/* Compact Header */}
         <div
-          className={`text-center mb-16 ${
+          className={`text-center mb-12 ${
             isIntersecting ? "fade-in-up" : "hidden-initial"
           }`}
         >
-          <div className="inline-flex items-center gap-2 bg-blue-100/50 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-6 backdrop-blur-sm">
-            <Mail className="w-4 h-4" />
+          <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-3 py-1.5 rounded-full text-sm font-medium mb-4">
+            <Phone className="w-4 h-4" />
             {t("contactTitle")}
           </div>
-          <h2 className="text-4xl sm:text-6xl font-bold bg-gradient-to-r from-slate-800 via-slate-700 to-blue-800 bg-clip-text text-transparent mb-6 leading-tight">
+          <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-slate-800 to-blue-800 bg-clip-text text-transparent mb-4">
             {t("contactTitle")}
           </h2>
-          <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg text-slate-600 max-w-xl mx-auto">
             {t("contactIntro")}
           </p>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-blue-600 mx-auto rounded-full"></div>
         </div>
 
-        {/* Contact Information Cards */}
-        <div
-          className={`grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 ${
-            isIntersecting ? "fade-in-up" : "hidden-initial"
-          }`}
-        >
-          {/* Email Card */}
-          <div className="bg-white/70 backdrop-blur-sm border border-white/50 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group">
-            <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-              <Mail className="w-7 h-7 text-white" />
+        {/* Main Content Grid */}
+        <div className={`grid lg:grid-cols-3 gap-8 ${isIntersecting ? "fade-in-up" : "hidden-initial"}`}>
+          
+          {/* Left Column - Office Locations */}
+          <div className="lg:col-span-1 space-y-4">
+            <h3 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+              <Building2 className="w-5 h-5 text-blue-600" />
+              Our Locations
+            </h3>
+            
+            {/* Head Office */}
+            <div className="bg-white/80 border border-white/60 rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 group">
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                  <Building2 className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-slate-800 mb-1">{t("headOffice")}</h4>
+                  <p className="text-sm text-slate-600 leading-relaxed">{t("headOfficeAddress")}</p>
+                </div>
+              </div>
             </div>
-            <h3 className="text-xl font-bold text-slate-800 mb-3">Email</h3>
-            <p className="text-slate-600 text-lg">{t("contactEmail")}</p>
+
+            {/* Branches */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
+              <div className="bg-white/80 border border-white/60 rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 group">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <MapPin className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-slate-800 mb-1">{t("fukuiBranch")}</h4>
+                    <p className="text-sm text-slate-600">{t("fukuiBranchAddress")}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white/80 border border-white/60 rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 group">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <MapPin className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-slate-800 mb-1">{t("sakaiBranch")}</h4>
+                    <p className="text-sm text-slate-600">{t("sakaiBranchAddress")}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Phone Card */}
-          <div className="bg-white/70 backdrop-blur-sm border border-white/50 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group">
-            <div className="w-14 h-14 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-              <Phone className="w-7 h-7 text-white" />
+          {/* Middle Column - Contact Information */}
+          <div className="lg:col-span-1 space-y-6">
+            {/* General Contact */}
+            <div className="bg-white/80 border border-white/60 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+              <h3 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+                <Mail className="w-5 h-5 text-blue-600" />
+                {t("generalContact")}
+              </h3>
+              <div className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <Mail className="w-4 h-4 text-slate-500 flex-shrink-0" />
+                  <span className="text-sm text-slate-700">{t("generalContactEmail")}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Phone className="w-4 h-4 text-slate-500 flex-shrink-0" />
+                  <span className="text-sm text-slate-700">{t("generalContactPhone")}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-sm text-slate-700 ml-6">{t("generalContactFax")}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Clock className="w-4 h-4 text-slate-500 flex-shrink-0" />
+                  <span className="text-sm text-slate-700">{t("generalContactHours")}</span>
+                </div>
+              </div>
             </div>
-            <h3 className="text-xl font-bold text-slate-800 mb-3">Phone</h3>
-            <p className="text-slate-600 text-lg">{t("contactPhone")}</p>
+
+            {/* Direct Contact */}
+            <div className="bg-white/80 border border-white/60 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+              <h3 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+                <Phone className="w-5 h-5 text-green-600" />
+                {t("directContact")}
+              </h3>
+              <div className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <Phone className="w-4 h-4 text-slate-500 flex-shrink-0" />
+                  <span className="text-sm text-slate-700">{t("directContactMobile")}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Clock className="w-4 h-4 text-slate-500 flex-shrink-0" />
+                  <span className="text-sm text-slate-700">{t("directContactHours")}</span>
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Offices Card */}
-          <div className="bg-white/70 backdrop-blur-sm border border-white/50 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group md:col-span-2 lg:col-span-1">
-            <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-              <MapPin className="w-7 h-7 text-white" />
-            </div>
-            <h3 className="text-xl font-bold text-slate-800 mb-3">{t("contactOffices")}</h3>
-            <div className="space-y-2">
-              {offices.map((office, index) => (
-                <p key={index} className="text-slate-600 text-sm leading-relaxed">
-                  {office}
-                </p>
-              ))}
+          {/* Right Column - Liaison Offices */}
+          <div className="lg:col-span-1">
+            <div className="bg-white/80 border border-white/60 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 h-full">
+              <h3 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+                <Globe className="w-5 h-5 text-purple-600" />
+                {t("liaisonOffices")}
+              </h3>
+              <p className="text-sm text-slate-600 mb-4">{t("liaisonOfficesDescription")}</p>
+              <div className="grid grid-cols-2 gap-2">
+                {Array.isArray(t("liaisonOfficesCountries", { returnObjects: true })) 
+                  ? (t("liaisonOfficesCountries", { returnObjects: true }) as string[]).map((country: string, index: number) => (
+                      <div key={index} className="text-center p-2 bg-slate-50/60 rounded-lg hover:bg-slate-100/60 transition-colors">
+                        <span className="text-xs text-slate-700 font-medium">{country}</span>
+                      </div>
+                    ))
+                  : null
+                }
+              </div>
             </div>
           </div>
-        </div>
-
-        {/* LinkedIn Button */}
-        <div
-          className={`text-center ${
-            isIntersecting ? "fade-in-up" : "hidden-initial"
-          }`}
-        >
-          <a
-            href="https://www.linkedin.com/company/ikeda-corporation/about/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 backdrop-blur-sm"
-          >
-            <Linkedin className="w-6 h-6 group-hover:scale-110 transition-transform duration-300" />
-            <span className="text-lg">{t("linkedin")}</span>
-            <ExternalLink className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
-          </a>
         </div>
       </div>
 
@@ -115,13 +168,13 @@ const Contact = () => {
         
         .hidden-initial {
           opacity: 0;
-          transform: translateY(30px);
+          transform: translateY(20px);
         }
         
         @keyframes fadeInUp {
           from {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
           }
           to {
             opacity: 1;
