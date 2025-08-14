@@ -198,139 +198,173 @@ const Projects = () => {
           </div>
         </div>
 
-        {/* Enhanced PDF Downloads Section */}
-        <div
-          className={`mt-20 ${
-            isIntersecting ? "fade-in-up" : "hidden-initial"
-          }`}
-        >
-          <div className="text-center mb-12">
-            <h3 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">
-              {t("pdfDocumentsTitle")}
-            </h3>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              {t("pdfDocumentsDescription")}
-            </p>
-            <div className="h-1 w-24 bg-[#4682B4] mx-auto mt-6"></div>
+          {/* Enhanced PDF Downloads Section */}
+<div
+  className={`mt-20 ${
+    isIntersecting ? "fade-in-up" : "hidden-initial"
+  }`}
+>
+  <div className="text-center mb-12">
+    <h3 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">
+      {t("pdfDocumentsTitle")}
+    </h3>
+    <p className="text-lg text-gray-600 max-w-2xl mx-auto px-4">
+      {t("pdfDocumentsDescription")}
+    </p>
+    <div className="h-1 w-24 bg-[#4682B4] mx-auto mt-6"></div>
+  </div>
+  
+  {/* Desktop Grid Layout */}
+  <div className="hidden lg:grid lg:grid-cols-2 xl:grid-cols-4 gap-4 lg:gap-6">
+    {pdfDocuments.map((doc, index) => (
+      <div
+        key={index}
+        className="bg-white rounded-2xl p-4 lg:p-6 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer group transform hover:-translate-y-2"
+        onClick={() => handleDownload(doc.filename)}
+      >
+        <div className="flex flex-col items-center text-center h-full">
+          <div className="w-16 h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-[#9e1b1b] to-[#7a1515] rounded-2xl flex items-center justify-center mb-4 lg:mb-6 group-hover:scale-110 transition-transform duration-300">
+            <span className="text-2xl lg:text-3xl">{doc.icon}</span>
           </div>
-          
-          {/* Desktop Grid Layout */}
-          <div className="hidden lg:grid lg:grid-cols-2 xl:grid-cols-4 gap-6">
-            {pdfDocuments.map((doc, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer group transform hover:-translate-y-2"
-                onClick={() => handleDownload(doc.filename)}
-              >
-                <div className="flex flex-col items-center text-center h-full">
-                  <div className="w-20 h-20 bg-gradient-to-br from-[#9e1b1b] to-[#7a1515] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <span className="text-3xl">{doc.icon}</span>
-                  </div>
-                  <h4 className="text-lg font-bold text-gray-800 mb-3 group-hover:text-[#9e1b1b] transition-colors line-clamp-2">
-                    {t(doc.titleKey)}
-                  </h4>
-                  <p className="text-sm text-gray-600 mb-6 flex-grow line-clamp-3">
-                    {t(doc.descriptionKey)}
-                  </p>
-                  <div className="flex items-center justify-center text-[#9e1b1b] text-sm font-semibold group-hover:text-[#7a1515] transition-colors">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 mr-2"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                      />
-                    </svg>
-                    <span>{t("downloadPdf")}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Mobile Horizontal Scroll Layout */}
-          <div className="lg:hidden">
-            <div className="flex gap-4 overflow-x-auto pb-4 px-4 -mx-4 scrollbar-hide">
-              {pdfDocuments.map((doc, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group min-w-[280px] flex-shrink-0"
-                  onClick={() => handleDownload(doc.filename)}
-                >
-                  <div className="flex flex-col items-center text-center h-full">
-                    <div className="w-16 h-16 bg-gradient-to-br from-[#9e1b1b] to-[#7a1515] rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                      <span className="text-2xl">{doc.icon}</span>
-                    </div>
-                    <h4 className="text-base font-bold text-gray-800 mb-2 group-hover:text-[#9e1b1b] transition-colors">
-                      {t(doc.titleKey)}
-                    </h4>
-                    <p className="text-sm text-gray-600 mb-4 line-clamp-2">
-                      {t(doc.descriptionKey)}
-                    </p>
-                    <div className="flex items-center justify-center text-[#9e1b1b] text-sm font-semibold group-hover:text-[#7a1515] transition-colors">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-4 w-4 mr-2"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                        />
-                      </svg>
-                      <span>{t("downloadPdf")}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            
-            {/* Scroll Indicator */}
-            <div className="flex justify-center mt-4">
-              <div className="flex items-center text-gray-500 text-sm">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4 mr-1"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M7 16l-4-4m0 0l4-4m-4 4h18"
-                  />
-                </svg>
-                <span>Swipe to see more</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4 ml-1"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </div>
-            </div>
+          <h4 className="text-base lg:text-lg font-bold text-gray-800 mb-2 lg:mb-3 group-hover:text-[#9e1b1b] transition-colors line-clamp-2">
+            {t(doc.titleKey)}
+          </h4>
+          <p className="text-sm text-gray-600 mb-4 lg:mb-6 flex-grow line-clamp-3">
+            {t(doc.descriptionKey)}
+          </p>
+          <div className="flex items-center justify-center text-[#9e1b1b] text-sm font-semibold group-hover:text-[#7a1515] transition-colors">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4 lg:h-5 lg:w-5 mr-2"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              />
+            </svg>
+            <span>{t("downloadPdf")}</span>
           </div>
         </div>
+      </div>
+    ))}
+  </div>
+
+  {/* Mobile & Tablet Horizontal Scroll Layout */}
+  <div className="lg:hidden">
+    {/* Scroll Container - properly contained */}
+    <div className="w-full overflow-hidden">
+      <div 
+        className="flex gap-4 overflow-x-auto pb-4 px-4 snap-x snap-mandatory"
+        style={{
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none',
+          WebkitOverflowScrolling: 'touch'
+        }}
+      >
+        {pdfDocuments.map((doc, index) => (
+          <div
+            key={index}
+            className="bg-white rounded-2xl p-5 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group flex-shrink-0 w-72 sm:w-80 snap-center"
+            onClick={() => handleDownload(doc.filename)}
+          >
+            <div className="flex flex-col items-center text-center h-full">
+              <div className="w-16 h-16 bg-gradient-to-br from-[#9e1b1b] to-[#7a1515] rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                <span className="text-2xl">{doc.icon}</span>
+              </div>
+              <h4 className="text-lg font-bold text-gray-800 mb-3 group-hover:text-[#9e1b1b] transition-colors leading-tight">
+                {t(doc.titleKey)}
+              </h4>
+              <p className="text-sm text-gray-600 mb-4 flex-grow leading-relaxed">
+                {t(doc.descriptionKey)}
+              </p>
+              <div className="flex items-center justify-center text-[#9e1b1b] text-sm font-semibold group-hover:text-[#7a1515] transition-colors">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4 w-4 mr-2"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  />
+                </svg>
+                <span>{t("downloadPdf")}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+        {/* Spacer to ensure last item can be fully visible */}
+        <div className="w-4 flex-shrink-0"></div>
+      </div>
+    </div>
+    
+    {/* Scroll Indicator */}
+    <div className="flex justify-center mt-6">
+      <div className="flex items-center text-gray-500 text-sm bg-gray-100 px-4 py-2 rounded-full">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-4 w-4 mr-2 animate-pulse"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M7 16l-4-4m0 0l4-4m-4 4h18"
+          />
+        </svg>
+        <span className="font-medium">Swipe to explore more</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-4 w-4 ml-2 animate-pulse"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M17 8l4 4m0 0l-4 4m4-4H3"
+          />
+        </svg>
+      </div>
+    </div>
+
+    {/* Progress Dots */}
+    <div className="flex justify-center mt-4 space-x-2">
+      {pdfDocuments.map((_, index) => (
+        <div
+          key={index}
+          className="w-2 h-2 rounded-full bg-gray-300"
+        ></div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style jsx>{`
+  /* Hide scrollbar for WebKit browsers */
+  .overflow-x-auto::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Smooth scrolling for better UX */
+  .overflow-x-auto {
+    scroll-behavior: smooth;
+  }
+`}</style>
       </div>
     </div>
   );

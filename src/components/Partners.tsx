@@ -1,29 +1,31 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
+import Image from "next/image";
 import { useTranslation } from "react-i18next";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import "../i18n";
 
 const logos = [
-  { src: "/Partners/file2.svg", alt: "Partner 2" },
-  { src: "/Partners/file3.svg", alt: "Partner 3" },
-  { src: "/Partners/file4.svg", alt: "Partner 4" },
-  { src: "/Partners/file5.svg", alt: "Partner 5" },
-  { src: "/Partners/file6.svg", alt: "Partner 6" },
-  { src: "/Partners/file7.svg", alt: "Partner 7" },
-  { src: "/Partners/file8.svg", alt: "Partner 8" },
-  { src: "/Partners/file9.svg", alt: "Partner 9" },
-  { src: "/Partners/file11.svg", alt: "Partner 11" },
-  { src: "/Partners/file12.svg", alt: "Partner 12" },
-  { src: "/Partners/file13.svg", alt: "Partner 13" },
-  { src: "/Partners/file14.svg", alt: "Partner 14" },
-  { src: "/Partners/file15.svg", alt: "Partner 15" },
-  { src: "/Partners/file16.svg", alt: "Partner 16" },
+  { src: "/Partners/file2.svg", alt: "Partner 2", name: "China Council" },
+  { src: "/Partners/file3.svg", alt: "Partner 3", name: "China International Contractors Association Information" },
+  { src: "/Partners/file4.svg", alt: "Partner 4", name: "CW CPA" },
+  { src: "/Partners/file5.svg", alt: "Partner 5", name: "China Chamber of Commerce" },
+  { src: "/Partners/file6.svg", alt: "Partner 6", name: "Ministry of Commerce" },
+  { src: "/Partners/file7.svg", alt: "Partner 7", name: "Istanbul Ticaret ODASI" },
+  { src: "/Partners/file8.svg", alt: "Partner 8", name: "All-China Federation of Industry and Commerce" },
+  { src: "/Partners/file9.svg", alt: "Partner 9", name: "Ministry of Economy, Trade and Industry" },
+  { src: "/Partners/file11.svg", alt: "Partner 11", name: "Institute of Practitioners in Advertising" },
+  { src: "/Partners/file12.svg", alt: "Partner 12", name: "北大阪商工会议所" },
+  { src: "/Partners/file13.svg", alt: "Partner 13", name: "Indonesian Human Resources Placement in Japan" },
+  { src: "/Partners/file14.svg", alt: "Partner 14", name: "Overseas Construction Association of Japan" },
+  { src: "/Partners/file15.svg", alt: "Partner 15", name: "Japanese Review of Cultural Anthropology" },
+  { src: "/Partners/file16.svg", alt: "Partner 16", name: "Chinese embassy in Japan" },
 ];
 
 const Partners = () => {
   const { t } = useTranslation();
   const [ref, isIntersecting] = useIntersectionObserver({ threshold: 0.1 });
+  const [tooltip, setTooltip] = useState<{ x: number; y: number; text: string } | null>(null);
 
   return (
     <>
@@ -45,9 +47,13 @@ const Partners = () => {
           animation-play-state: paused;
         }
 
-        /* Gradient fade effects */
-        .marquee-container::before,
-        .marquee-container::after {
+        .marquee-container {
+          position: relative;
+          overflow: hidden;
+        }
+
+        .marquee-wrapper::before,
+        .marquee-wrapper::after {
           content: '';
           position: absolute;
           top: 0;
@@ -57,20 +63,40 @@ const Partners = () => {
           pointer-events: none;
         }
 
-        .marquee-container::before {
+        .marquee-wrapper::before {
           left: 0;
           background: linear-gradient(to right, white, transparent);
         }
 
-        .marquee-container::after {
+        .marquee-wrapper::after {
           right: 0;
           background: linear-gradient(to left, white, transparent);
         }
 
+        /* Tooltip styles */
+        .partner-tooltip-fixed {
+          position: fixed;
+          background: rgba(0, 0, 128, 0.95);
+          color: white;
+          padding: 8px 12px;
+          border-radius: 8px;
+          font-size: 12px;
+          font-weight: 500;
+          white-space: normal;
+          text-align: center;
+          line-height: 1.3;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          max-width: 220px;
+          z-index: 9999;
+          pointer-events: none;
+          transition: opacity 0.2s ease;
+        }
+
         @media (max-width: 640px) {
-          .marquee-container::before,
-          .marquee-container::after {
-            width: 50px;
+          .partner-tooltip-fixed {
+            font-size: 11px;
+            padding: 6px 10px;
+            max-width: 180px;
           }
         }
       `}</style>
@@ -117,38 +143,30 @@ const Partners = () => {
               isIntersecting ? "opacity-100" : "opacity-0"
             }`}
           >
-            {/* Single Row - Right to Left */}
             <div className="marquee-container relative overflow-hidden">
               <div className="flex animate-marquee whitespace-nowrap">
-                {/* First set of logos */}
-                {logos.map((logo, index) => (
+                {logos.concat(logos).map((logo, index) => (
                   <div
                     key={`logo-${index}`}
-                    className="flex-shrink-0 mx-6 sm:mx-8 lg:mx-12 group"
+                    className="flex-shrink-0 mx-4 sm:mx-6 lg:mx-8 partner-item group"
+                    onMouseEnter={(e) => {
+                      const rect = (e.currentTarget as HTMLDivElement).getBoundingClientRect();
+                      setTooltip({ x: rect.left + rect.width / 2, y: rect.top, text: logo.name });
+                    }}
+                    onMouseLeave={() => setTooltip(null)}
                   >
-                    <div className="relative p-4 sm:p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-2">
-                      <img
-                        src={logo.src}
-                        alt={logo.alt}
-                        className="h-12 sm:h-16 lg:h-20 w-auto object-contain"
-                      />
-                      <div className="absolute inset-0 rounded-xl border border-gray-200 group-hover:border-primary/30 transition-colors duration-300"></div>
-                    </div>
-                  </div>
-                ))}
-                {/* Duplicate set for seamless loop */}
-                {logos.map((logo, index) => (
-                  <div
-                    key={`logo-duplicate-${index}`}
-                    className="flex-shrink-0 mx-6 sm:mx-8 lg:mx-12 group"
-                  >
-                    <div className="relative p-4 sm:p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-2">
-                      <img
-                        src={logo.src}
-                        alt={logo.alt}
-                        className="h-12 sm:h-16 lg:h-20 w-auto object-contain"
-                      />
-                      <div className="absolute inset-0 rounded-xl border border-gray-200 group-hover:border-primary/30 transition-colors duration-300"></div>
+                    <div className="text-center w-32 sm:w-36 lg:w-40 relative">
+                      <div className="relative p-4 sm:p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-2">
+                        <Image
+                          src={logo.src}
+                          alt={logo.alt}
+                          width={80}
+                          height={80}
+                          className="h-12 sm:h-16 lg:h-20 w-auto object-contain mx-auto"
+                          priority={index < 4}
+                        />
+                        <div className="absolute inset-0 rounded-xl border border-gray-200 group-hover:border-primary/30 transition-colors duration-300"></div>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -156,13 +174,19 @@ const Partners = () => {
             </div>
           </div>
 
-          {/* Bottom decorative text */}
-          <div
-            className={`text-center mt-12 sm:mt-16 lg:mt-20 transition-all duration-1000 delay-600 ${
-              isIntersecting ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
-          </div>
+          {/* Tooltip */}
+          {tooltip && (
+            <div
+              className="partner-tooltip-fixed"
+              style={{
+                left: tooltip.x,
+                top: tooltip.y - 10, // show above logo
+                transform: "translateX(-50%) translateY(-100%)",
+              }}
+            >
+              {tooltip.text}
+            </div>
+          )}
         </div>
       </div>
     </>

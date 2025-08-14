@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useTranslation } from "react-i18next";
 import "../i18n";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -14,8 +15,23 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
           <div className="flex-shrink-0">
-            <Link href="/" className="text-2xl font-bold text-white hover:text-[#D4AF37] transition-colors">
-              Ikeda Group
+            <Link href="/" className="flex items-center space-x-3 group">
+              <div className="relative w-10 h-10 sm:w-12 sm:h-12 transition-all duration-300 group-hover:scale-110">
+                <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-[#D4AF37] to-[#B8860B] opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
+                <Image
+                  src="/images/logo.png"
+                  alt="Ikeda Group Logo"
+                  fill
+                  className="object-contain relative z-10 filter brightness-110 contrast-110 group-hover:brightness-125 group-hover:scale-105 transition-all duration-300"
+                  sizes="(max-width: 640px) 40px, 48px"
+                />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent group-hover:from-[#D4AF37] group-hover:to-[#F4E87C] transition-all duration-300">
+                  Ikeda Group
+                </span>
+                <div className="h-0.5 w-0 bg-gradient-to-r from-[#D4AF37] to-[#F4E87C] group-hover:w-full transition-all duration-500 ease-out"></div>
+              </div>
             </Link>
           </div>
 
