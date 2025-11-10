@@ -1,0 +1,114 @@
+[
+  {
+    "id": "service1",
+    "image": "/Services/architect2.png",
+    "title": {
+      "en": "Architectural & Engineering Design Outsourcing",
+      "ja": "建築・設計アウトソーシング",
+      "pt": "Terceirização de Design de Arquitetura e Engenharia"
+    },
+    "description": {
+      "en": "High-quality, cost-effective architectural and multi-disciplinary engineering design services tailored to international standards—including BIM modeling, urban planning, and technical documentation.",
+      "ja": "高品質なBIM設計、都市計画、技術ドキュメント",
+      "pt": "Serviços de design de arquitetura e engenharia multidisciplinar de alta qualidade e econômicos, adaptados aos padrões internacionais, incluindo modelagem BIM, planejamento urbano e documentação técnica."
+    }
+  },
+  {
+    "id": "service2",
+    "image": "/Services/1.jpg",
+    "title": {
+      "en": "Comprehensive Design & Technical Solutions",
+      "ja": "エンジニアリング＆技術ソリューション",
+      "pt": "Soluções Abrangentes de Design e Técnicas"
+    },
+    "description": {
+      "en": "From structural and civil engineering to mechanical, electrical, and interior design, we provide full-spectrum solutions for seamless project execution.",
+      "ja": "構造・設備・インテリア設計",
+      "pt": "Da engenharia estrutural e civil ao design mecânico, elétrico e de interiores, fornecemos soluções de espectro completo para uma execução de projeto perfeita."
+    }
+  },
+  {
+    "id": "service3",
+    "image": "/Services/2.jpg",
+    "title": {
+      "en": "Building Demolition & Redevelopment",
+      "ja": "建物解体・再開発",
+      "pt": "Demolição e Reurbanização de Edifícios"
+    },
+    "description": {
+      "en": "Controlled, safe, and environmentally responsible demolition services—preparing urban and industrial sites for modern infrastructure.",
+      "ja": "環境に配慮した安全な解体",
+      "pt": "Serviços de demolição controlados, seguros e ambientalmente responsáveis, preparando locais urbanos e industriais para infraestrutura moderna."
+    }
+  },
+  {
+    "id": "service4",
+    "image": "/Services/6.jpeg",
+    "title": {
+      "en": "Global Procurement & Strategic Sourcing",
+      "ja": "グローバル調達・資材ソーシング",
+      "pt": "Aquisição Global e Sourcing Estratégico"
+    },
+    "description": {
+      "en": "We connect clients to trusted suppliers in China and Turkey for construction materials, heavy equipment, industrial commodities, and project-specific solutions.",
+      "ja": "中国・トルコからの資材、設備、工業製品の調達",
+      "pt": "Conectamos clientes a fornecedores confiáveis na China e na Turquia para materiais de construção, equipamentos pesados, commodities industriais e soluções específicas para projetos."
+    }
+  },
+  {
+    "id": "service5",
+    "image": "/Services/4.webp",
+    "title": {
+      "en": "Construction Project Development & Consultancy",
+      "ja": "建設プロジェクトコンサルティング",
+      "pt": "Desenvolvimento e Consultoria de Projetos de Construção"
+    },
+    "description": {
+      "en": "We guide complex projects such as hospitals, schools, airports, roads, bridges, tunnels, and energy facilities—from feasibility studies to implementation strategies.",
+      "ja": "病院、学校、空港、道路、橋梁、エネルギー施設",
+      "pt": "Orientamos projetos complexos como hospitais, escolas, aeroportos, estradas, pontes, túneis e instalações de energia, desde estudos de viabilidade até estratégias de implementação."
+    }
+  },
+  {
+    "id": "service6",
+    "image": "/Services/trade.jpg",
+    "title": {
+      "en": "International Trade & Market Facilitation",
+      "ja": "国際貿易・市場展開支援",
+      "pt": "Facilitação de Comércio e Mercado Internacional"
+    },
+    "description": {
+      "en": "Enabling smooth cross-border trade between Japan, China, Turkey, and Brazil, with full logistics, customs, and compliance management.",
+      "ja": "日本・中国・トルコ・ブラジル間の円滑な貿易サポート",
+      "pt": "Permitindo um comércio transfronteiriço tranquilo entre Japão, China, Turquia e Brasil, com gerenciamento completo de logística, alfândega e conformidade."
+    }
+  },
+  {
+    "id": "service7",
+    "image": "/Services/japan.png",
+    "title": {
+      "en": "Global Representation of Japanese Companies",
+      "ja": "日本企業の海外展開支援",
+      "pt": "Representação Global de Empresas Japonesas"
+    },
+    "description": {
+      "en": "We represent and expand Japanese enterprises in emerging markets, creating access to new clients, government projects, and distribution channels.",
+      "ja": "新規顧客開拓、政府案件、販路拡大のサポート",
+      "pt": "Representamos e expandimos empresas japonesas em mercados emergentes, criando acesso a novos clientes, projetos governamentais e canais de distribuição."
+    }
+  },
+  {
+    "id": "service8",
+    "image": "/Services/8.jpeg",
+    "title": {
+      "en": "Exclusive Distribution in Japan",
+      "ja": "日本国内での代理販売",
+      "pt": "Distribuição Exclusiva no Japão"
+    },
+    "description": {
+      "en": "We serve as authorized distributors in Japan for construction materials, mining commodities, food products, and industrial equipment sourced from Brazil, Turkey, and China.",
+      "ja": "ブラジル・トルコ・中国からの建材、鉱物資源、食品、機械の販売",
+      "pt": "Atuamos como distribuidores autorizados no Japão para materiais de construção, commodities de mineração, produtos alimentícios e equipamentos industriais provenientes do Brasil, Turquia e China."
+    }
+  }
+]

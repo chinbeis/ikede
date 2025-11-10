@@ -3,54 +3,30 @@ import React from "react";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import servicesData from "../../data/services.json";
 import "../i18n";
 
+interface Service {
+  id: string;
+  image: string;
+  title: {
+    en: string;
+    ja: string;
+    pt: string;
+  };
+  description: {
+    en: string;
+    ja: string;
+    pt: string;
+  };
+}
+
 const Services = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [ref, isIntersecting] = useIntersectionObserver({ threshold: 0.1 });
 
-  const services = [
-    {
-      image: "/Services/architect2.png",
-      title: t("service1Title"),
-      description: t("service1Text"),
-    },
-    {
-      image: "/Services/1.jpg",
-      title: t("service2Title"),
-      description: t("service2Text"),
-    },
-    {
-      image: "/Services/2.jpg",
-      title: t("service3Title"),
-      description: t("service3Text"),
-    },
-    {
-      image: "/Services/6.jpeg",
-      title: t("service4Title"),
-      description: t("service4Text"),
-    },
-    {
-      image: "/Services/4.webp",
-      title: t("service5Title"),
-      description: t("service5Text"),
-    },
-    {
-      image: "/Services/trade.jpg",
-      title: t("service6Title"),
-      description: t("service6Text"),
-    },
-    {
-      image: "/Services/japan.png",
-      title: t("service7Title"),
-      description: t("service7Text"),
-    },
-    {
-      image: "/Services/8.jpeg",
-      title: t("service8Title"),
-      description: t("service8Text"),
-    },
-  ];
+  const services = servicesData as Service[];
+  const currentLanguage = i18n.language as keyof Service["title"];
 
   return (
     <div
@@ -76,25 +52,25 @@ const Services = () => {
             isIntersecting ? "fade-in-up" : "hidden-initial"
           }`}
         >
-          {services.map((service, index) => (
+          {services.map((service) => (
             <div
-              key={index}
+              key={service.id}
               className="bg-white pb-4 px-4 rounded-xl shadow-lg text-center transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl"
             >
               <div className="relative w-full h-48 mb-6">
                 <Image
                   src={service.image}
-                  alt={service.title}
+                  alt={service.title[currentLanguage]}
                   fill
                   className="object-cover rounded-lg"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
               <h3 className="text-2xl font-bold text-gray-800 mb-3">
-                {service.title}
+                {service.title[currentLanguage]}
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                {service.description}
+                {service.description[currentLanguage]}
               </p>
             </div>
           ))}

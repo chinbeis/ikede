@@ -1,122 +1,145 @@
 "use client";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import * as Form from "@radix-ui/react-form";
 
-const NewPost = () => {
-  const [title, setTitle] = useState("");
-  const [excerpt, setExcerpt] = useState("");
-  const [image, setImage] = useState("");
-  const [content, setContent] = useState("");
+const NewServicePage = () => {
   const router = useRouter();
+  const [title, setTitle] = useState({ en: "", ja: "", pt: "" });
+  const [description, setDescription] = useState({ en: "", ja: "", pt: "" });
+  const [image, setImage] = useState<File | null>(null);
+  const [uploading, setUploading] = useState(false);
 
-  const handleSubmit = async () => {
-    const newPost = {
-      title,
-      excerpt,
-      image,
-      content,
-      date: new Date().toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      }),
-    };
-    await fetch("/api/blogs", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newPost),
-    });
-    router.push("/admin/dashboard");
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setImage(e.target.files[0]);
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!image) {
+      alert("Please select an image.");
+      return;
+    }
+
+    setUploading(true);
+    const formData = new FormData();
+    formData.append("file", image);
+
+    try {
+      const uploadRes = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      const uploadData = await uploadRes.json();
+      if (!uploadData.success) {
+        throw new Error("Image upload failed");
+      }
+
+      const newService = {
+        id: `service${Date.now()}`,
+        image: uploadData.path,
+        title,
+        description,
+      };
+
+      const serviceRes = await fetch("/api/services", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newService),
+      });
+
+      if (serviceRes.ok) {
+        router.push("/admin/services");
+      } else {
+        throw new Error("Failed to create service");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("An error occurred. Please try again.");
+    } finally {
+      setUploading(false);
+    }
   };
 
   return (
     <div className="min-h-screen bg-blue-900 text-white">
       <div className="container mx-auto p-8">
-        <h1 className="text-3xl font-bold mb-8">New Post</h1>
-        <Form.Root
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleSubmit();
-          }}
-          className="p-8 bg-white text-gray-800 rounded-lg shadow-md"
-        >
-          <Form.Field name="title" className="mb-4">
-            <Form.Label className="block text-sm font-medium">
-              Title
-            </Form.Label>
-            <Form.Control asChild>
-              <input
-                type="text"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
-                required
-              />
-            </Form.Control>
-          </Form.Field>
-          <Form.Field name="excerpt" className="mb-4">
-            <Form.Label className="block text-sm font-medium">
-              Excerpt
-            </Form.Label>
-            <Form.Control asChild>
-              <textarea
-                value={excerpt}
-                onChange={(e) => setExcerpt(e.target.value)}
-                rows={4}
-                className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
-                required
-              />
-            </Form.Control>
-          </Form.Field>
-          <Form.Field name="image" className="mb-4">
-            <Form.Label className="block text-sm font-medium">
-              Image
-            </Form.Label>
-            <Form.Control asChild>
-              <input
-                type="file"
-                onChange={async (e) => {
-                  if (e.target.files) {
-                    const file = e.target.files[0];
-                    const formData = new FormData();
-                    formData.append("file", file);
-                    const res = await fetch("/api/upload", {
-                      method: "POST",
-                      body: formData,
-                    });
-                    const data = await res.json();
-                    setImage(data.url);
-                  }
-                }}
-                className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
-                required
-              />
-            </Form.Control>
-          </Form.Field>
-          <Form.Field name="content" className="mb-4">
-            <Form.Label className="block text-sm font-medium">
-              Content
-            </Form.Label>
-            <Form.Control asChild>
-              <textarea
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-                rows={10}
-                className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
-                required
-              />
-            </Form.Control>
-          </Form.Field>
-          <Form.Submit asChild>
-            <button className="w-full py-2 px-4 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
-              Create Post
-            </button>
-          </Form.Submit>
-        </Form.Root>
+        <h1 className="text-3xl font-bold mb-8">Add New Service</h1>
+        <form onSubmit={handleSubmit} className="bg-gray-800 p-8 rounded-lg shadow-md">
+          <div className="mb-4">
+            <label className="block mb-1">Title (EN)</label>
+            <input
+              type="text"
+              value={title.en}
+              onChange={(e) => setTitle({ ...title, en: e.target.value })}
+              className="w-full p-2 border bg-gray-700 border-gray-600 rounded"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block mb-1">Description (EN)</label>
+            <textarea
+              value={description.en}
+              onChange={(e) => setDescription({ ...description, en: e.target.value })}
+              className="w-full p-2 border bg-gray-700 border-gray-600 rounded"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block mb-1">Title (JA)</label>
+            <input
+              type="text"
+              value={title.ja}
+              onChange={(e) => setTitle({ ...title, ja: e.target.value })}
+              className="w-full p-2 border bg-gray-700 border-gray-600 rounded"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block mb-1">Description (JA)</label>
+            <textarea
+              value={description.ja}
+              onChange={(e) => setDescription({ ...description, ja: e.target.value })}
+              className="w-full p-2 border bg-gray-700 border-gray-600 rounded"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block mb-1">Title (PT)</label>
+            <input
+              type="text"
+              value={title.pt}
+              onChange={(e) => setTitle({ ...title, pt: e.target.value })}
+              className="w-full p-2 border bg-gray-700 border-gray-600 rounded"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block mb-1">Description (PT)</label>
+            <textarea
+              value={description.pt}
+              onChange={(e) => setDescription({ ...description, pt: e.target.value })}
+              className="w-full p-2 border bg-gray-700 border-gray-600 rounded"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block mb-1">Image</label>
+            <input type="file" onChange={handleFileChange} required className="w-full p-2 border bg-gray-700 border-gray-600 rounded"/>
+          </div>
+          <button
+            type="submit"
+            className="bg-green-500 text-white px-4 py-2 rounded"
+            disabled={uploading}
+          >
+            {uploading ? "Uploading..." : "Add Service"}
+          </button>
+        </form>
       </div>
     </div>
   );
 };
 
-export default NewPost;
+export default NewServicePage;

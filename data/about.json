@@ -1,0 +1,81 @@
+{
+  "whoWeAre": {
+    "title": {
+      "en": "Who We Are",
+      "ja": "私たちについて",
+      "pt": "Quem Somos"
+    },
+    "text1": {
+      "en": "Ikeda Group is a multidisciplinary enterprise combining Japanese precision and reliability with global reach. We specialize in connecting Japan, China, Turkey, and Brazil for seamless collaboration in infrastructure, trade, and market expansion.",
+      "ja": "Ikeda Group は、日本の品質と信頼性を基盤とし、グローバルな市場をつなぐ多角的な企業です。",
+      "pt": "O Ikeda Group é uma empresa multidisciplinar que combina a precisão e confiabilidade japonesas com alcance global. Somos especializados em conectar Japão, China, Turquia e Brasil para uma colaboração perfeita em infraestrutura, comércio e expansão de mercado."
+    },
+    "text2": {
+      "en": "For decades, our team has been trusted by government agencies, large-scale construction firms, and international investors to deliver high-value projects on time, on budget, and with the highest quality standards.",
+      "ja": "日本、中国、トルコ、ブラジルを結び、インフラ開発、国際貿易、マーケット拡大をサポートしています。",
+      "pt": "Por décadas, nossa equipe tem a confiança de agências governamentais, grandes construtoras e investidores internacionais para entregar projetos de alto valor no prazo, dentro do orçamento e com os mais altos padrões de qualidade."
+    },
+    "image": "/images/About.jpg"
+  },
+  "ourMission": {
+    "title": {
+      "en": "Our Mission",
+      "ja": "ミッション",
+      "pt": "Nossa Missão"
+    },
+    "text": {
+      "en": "To build trustworthy connections between nations, enabling projects that shape the future of infrastructure, trade, and sustainable development.",
+      "ja": "国と国をつなぎ、未来を創るインフラと貿易の架け橋となること。",
+      "pt": "Construir conexões confiáveis entre nações, permitindo projetos que moldam o futuro da infraestrutura, comércio e desenvolvimento sustentável."
+    }
+  },
+  "ourVision": {
+    "title": {
+      "en": "Our Vision",
+      "ja": "ビジョン",
+      "pt": "Nossa Visão"
+    },
+    "text": {
+      "en": "To become the leading Japanese gateway for global partnerships—bridging markets and building opportunities worldwide.",
+      "ja": "日本発のグローバルパートナーのゲートウェイとして、世界の市場を開拓し、持続可能な成長を支援すること。",
+      "pt": "Tornar-se o principal portal japonês para parcerias globais, unindo mercados e construindo oportunidades em todo o mundo."
+    }
+  },
+  "ourGlobalPresence": {
+    "title": {
+      "en": "Our Global Presence",
+      "ja": "拠点",
+      "pt": "Nossa Presença Global"
+    },
+    "locations": [
+      {
+        "name": {
+          "en": "Tokyo, Japan – Headquarters",
+          "ja": "東京（本社）",
+          "pt": "Tóquio, Japão – Sede"
+        }
+      },
+      {
+        "name": {
+          "en": "Beijing, China – Sourcing & Trade Hub",
+          "ja": "北京（中国ソーシング拠点）",
+          "pt": "Pequim, China – Centro de Sourcing e Comércio"
+        }
+      },
+      {
+        "name": {
+          "en": "Istanbul, Turkey – Infrastructure & Consultancy Base",
+          "ja": "イスタンブール（インフラ＆コンサルティング拠点）",
+          "pt": "Istambul, Turquia – Base de Infraestrutura e Consultoria"
+        }
+      },
+      {
+        "name": {
+          "en": "São Paulo, Brazil – Latin America Market Gateway",
+          "ja": "サンパウロ（ラテンアメリカ拠点）",
+          "pt": "São Paulo, Brasil – Portal de Mercado da América Latina"
+        }
+      }
+    ]
+  }
+}
