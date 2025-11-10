@@ -8,7 +8,7 @@ const AdminLogin = () => {
   const router = useRouter();
 
   const handleLogin = () => {
-    if (password === "password") {
+    if (password === "ikede2025") {
       sessionStorage.setItem("isAdmin", "true");
       router.push("/admin/dashboard");
     } else {
